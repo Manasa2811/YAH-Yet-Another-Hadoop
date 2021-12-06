@@ -1,6 +1,6 @@
 {
     "block_size": 64,
-    "path_to_datanodes": "/home/pes2ug19cs215/Bigdataproject/DATANODE",
+    "path_to_datanodes": "/home/pes2ug19cs215/Bigdataproject/DATANODE/",
     "path_to_namenodes": "/home/pes2ug19cs215/Bigdataproject/NAMENODE/",
     "replication_factor": 3,
     "num_datanodes": 5,
