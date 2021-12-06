@@ -8,5 +8,5 @@ class DatanodeServer(rpyc.Service):
 	def exposed_Datanode():		
 		if __name__ == "__main__":
 			connection = rpyc.connect('localhost', port = 18812, config={"allow_all_attrs": True})
-			st = ThreadedServer(DatanodeServer, port = 8888)
-			st.start()
+			th = ThreadedServer(DatanodeServer, port = 8888)
+			th.start()
