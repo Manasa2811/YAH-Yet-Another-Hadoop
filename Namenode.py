@@ -1,7 +1,8 @@
+#importing necassary modules
 import json
 import sys
 import argparse
-import rpyc #remote procedure calls
+import rpyc 
 from rpyc.utils.server import ThreadedServer
 import math
 import os.path
@@ -26,7 +27,7 @@ class NamenodeServer(rpyc.Service):
 		th.close()
 	
 	def exposed_init(self):
-		self.file_table = defaultdict(list)		#absolute path (root directory)
+		self.file_table = defaultdict(list)		
 		self.file_table[self.fs_path] = []
 		print("init",self.file_table)
 	
@@ -47,7 +48,7 @@ class NamenodeServer(rpyc.Service):
 			parent = self.fs_path + string
 		elif flag == 1:
 			parent = self.fs_path
-		#print(parent)
+		
 		
 		if(self.dir_exists(parent) == False):
 			return "Parent directory does not exist"
@@ -63,10 +64,10 @@ class NamenodeServer(rpyc.Service):
 				tmp_s = ''
 				for j in dire_name[:i+1]:
 					tmp_s = j + "/"
-					#print("tmp_s",tmp_s)
+					
 				self.file_table[self.fs_path + tmp_s].append(dire_name[i+1])
 				self.file_table[self.fs_path + tmp_s + dire_name[i+1] + "/"] = []
-		#self.file_table[dir].append('$')
+		
 		print(self.file_table)
 		return "\n	----Created new Directory----"
 	
@@ -100,8 +101,8 @@ class NamenodeServer(rpyc.Service):
 		
 
 if __name__=="__main__":
-	#getting values from config.json file -
-	parser = argparse.ArgumentParser()
+	
+	parser = argparse.ArgumentParser() #parsing the config file to get values
 	parser.add_argument('--config', required=False)
 	args = parser.parse_args()
 	subname = args.config
@@ -133,6 +134,6 @@ if __name__=="__main__":
 	NamenodeServer.file_table = {}
 	
 	
-	#starting up namenode service
+	#starting namenode service on port 18812
 	th = ThreadedServer(NamenodeServer, port=18812)
 	th.start()
