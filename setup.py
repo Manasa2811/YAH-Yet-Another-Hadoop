@@ -99,7 +99,7 @@ def config_setup():
 
     else:
         pathToDfs = createNewDFS()
-    
+     
     display(pathToDfs[1])
     #namenode.run(pathToDfs)
 
