@@ -5,7 +5,7 @@ master = rpyc.connect('localhost',port = 18812, config={'allow_public_attrs': Tr
 master.root.init()
 adr = 0
 while(adr != -1):
-	print("\n Choose your operation :\n (1)mkdir\n(2)rmdir")
+	print("\nWelcome to our Project \n Choose your operation :\n(1)mkdir\n(2)rmdir\n(3)Display directory structure\n(4)Exit")
 	adr = input()
 	if adr == '1':
 		f = input("\nEnter file name:")
@@ -21,5 +21,5 @@ while(adr != -1):
 		oper=master.root.display()
 		for i in oper:
 			print(i,oper[i])
-	elif adr == '-1' :
+	elif adr == '4' :
 		break
