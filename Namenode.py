@@ -18,12 +18,12 @@ class NamenodeServer(rpyc.Service):
 	def on_connect(self, conn):
 		dtdt = datetime.datetime.now()
 		
-		print(f"\nClient connected on {dt}")
+		print(f"Client connected on {dtdt}")
 	def on_disconnect(self, conn):
 		dtdt = datetime.datetime.now()
 		self.client -= 1
-		print(f"Client Disconnected on {dt}\n")
-		t.close()
+		print(f"Client Disconnected on {dtdt}")
+		th.close()
 	
 	def exposed_init(self):
 		self.file_table = defaultdict(list)		#absolute path (root directory)
