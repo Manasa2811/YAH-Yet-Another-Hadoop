@@ -1,3 +1,2 @@
 # YAH-Yet-Another-Hadoop
-### Big data project
-
+### YAH is a mini-HDFS
